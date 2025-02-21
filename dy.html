@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转到抖音App</title>
+    <script type="text/javascript">
+        function openDouyinApp() {
+            // 设置抖音App的URL Scheme
+            var appUrl = 'snssdk1128://'; // 抖音的URL Scheme
+            var webUrl = 'https://www.douyin.com'; // 如果没有安装App，则跳转到网页版抖音
+
+            // 延迟一段时间以检查App是否打开
+            var timeout;
+
+            // 尝试打开抖音App
+            window.location.href = appUrl;
+
+            // 设置超时，如果App未打开，则跳转到网页
+            timeout = setTimeout(function() {
+                window.location.href = webUrl;
+            }, 1000); // 1秒钟后如果App没有打开，则跳转到网页
+        }
+    </script>
+</head>
+<body>
+    <h1>点击下方按钮打开抖音</h1>
+    <button onclick="openDouyinApp()">打开抖音App</button>
+</body>
+</html>
