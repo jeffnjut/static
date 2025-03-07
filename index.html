@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳转到抖音App</title>
-    <script type="text/javascript">
-        
-async function copyAndShowDouyinLink(command) {
-    await navigator.clipboard.writeText(command);
-    console.log("抖音口令已复制：" + command);
-
-    // 创建 <a> 让用户手动点击
-    const link = document.createElement("a");
-    link.href = "snssdk1128://";
-    link.innerText = "点击打开抖音";
-    link.style.fontSize = "20px";
-    link.style.display = "block";
-    link.style.margin = "20px";
-    document.body.appendChild(link);
-}
-
-        
-    </script>
+    <title>打开抖音搜索</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #ff2c55;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e60044;
+        }
+    </style>
 </head>
 <body>
-    <h1>点击下方按钮打开抖音</h1>
-    <button onclick="copyAndShowDouyinLink('9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ')">打开抖音App</button>
+
+    <button onclick="openDouyinSearch()">🔍 打开抖音搜索1</button>
+
+    <script>
+        function openDouyinSearch() {
+            const keyword = "9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ";
+            const encodedKeyword = encodeURIComponent(keyword);
+            const douyinUrl = `snssdk1128://search?keyword=${encodedKeyword}`;
+            window.location.href = douyinUrl;
+        }
+    </script>
+
 </body>
 </html>
