@@ -6,19 +6,18 @@
     <title>跳转到抖音App</title>
     <script type="text/javascript">
         
-async function copyAndOpenDouyin(command) {
-    // 复制到剪贴板
+async function copyAndShowDouyinLink(command) {
     await navigator.clipboard.writeText(command);
     console.log("抖音口令已复制：" + command);
 
-    // 让页面短暂进入后台（模拟切换）
-    document.hidden = true; // 标记页面隐藏
-    window.blur(); // 让页面失去焦点
-
-    // 1 秒后打开抖音
-    setTimeout(() => {
-        window.location.href = "snssdk1128://";
-    }, 1000);
+    // 创建 <a> 让用户手动点击
+    const link = document.createElement("a");
+    link.href = "snssdk1128://";
+    link.innerText = "点击打开抖音";
+    link.style.fontSize = "20px";
+    link.style.display = "block";
+    link.style.margin = "20px";
+    document.body.appendChild(link);
 }
 
         
@@ -26,6 +25,6 @@ async function copyAndOpenDouyin(command) {
 </head>
 <body>
     <h1>点击下方按钮打开抖音</h1>
-    <button onclick="copyAndOpenDouyin('9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ')">打开抖音App</button>
+    <button onclick="copyAndShowDouyinLink('9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ')">打开抖音App</button>
 </body>
 </html>
