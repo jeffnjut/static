@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跳转到抖音App</title>
     <script type="text/javascript">
-        async function copyAndOpenDouyin(command) {
-                // 复制到剪贴板
+        
+async function copyAndOpenDouyin(command) {
+    // 复制到剪贴板
     await navigator.clipboard.writeText(command);
     console.log("抖音口令已复制：" + command);
 
-    // 创建隐藏的 <a> 标签
-    const link = document.createElement("a");
-    link.href = "snssdk1128://";
-    document.body.appendChild(link);
-    
-    // 触发点击
-    link.click();
+    // 让页面短暂进入后台（模拟切换）
+    document.hidden = true; // 标记页面隐藏
+    window.blur(); // 让页面失去焦点
 
-    // 移除元素
-    document.body.removeChild(link);
-        }
+    // 1 秒后打开抖音
+    setTimeout(() => {
+        window.location.href = "snssdk1128://";
+    }, 1000);
+}
+
+        
     </script>
 </head>
 <body>
