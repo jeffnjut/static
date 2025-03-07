@@ -5,41 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跳转到抖音App</title>
     <script type="text/javascript">
-        function openDouyinApp() {
-            // 设置抖音App的URL Scheme
-            var appUrl = 'snssdk1128://'; // 抖音的URL Scheme
-            var webUrl = 'https://www.douyin.com'; // 如果没有安装App，则跳转到网页版抖音
+        async function copyAndOpenDouyin(command) {
+            await navigator.clipboard.writeText(command);
+            console.log("抖音口令已复制：" + command);
 
-            // 延迟一段时间以检查App是否打开
-            var timeout;
+            // 1. 让页面短暂进入后台
+            setTimeout(() => {
+                document.hidden = true; // 尝试标记后台（部分浏览器不支持）
+                window.blur(); // 失去焦点
 
-            // 尝试打开抖音App
-            window.location.href = appUrl;
-
-            // 设置超时，如果App未打开，则跳转到网页
-            timeout = setTimeout(function() {
-                window.location.href = webUrl;
-            }, 1000); // 1秒钟后如果App没有打开，则跳转到网页
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text)
-                .then(() => {
-                    console.log("复制成功！");
-            })
-            .catch(err => {
-                console.error("复制失败：", err);
-        });
-
-        function twoStep() {
-            copyToClipboard("9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ");
-            openDouyinApp();
-        }
-}
+                // 2. 1 秒后再跳转抖音
+                setTimeout(() => {
+                    window.location.href = "snssdk1128://";
+                }, 1000);
+        }, 500);
+    }
     </script>
 </head>
 <body>
     <h1>点击下方按钮打开抖音</h1>
-    <button onclick="openDouyinApp()">打开抖音App</button>
+    <button onclick="copyAndOpenDouyin('9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ')">打开抖音App</button>
 </body>
 </html>
