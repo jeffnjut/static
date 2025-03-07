@@ -21,10 +21,26 @@
                 window.location.href = webUrl;
             }, 1000); // 1秒钟后如果App没有打开，则跳转到网页
         }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    console.log("复制成功！");
+            })
+            .catch(err => {
+                console.error("复制失败：", err);
+        });
+
+        function twoStep() {
+            copyToClipboard("9:/ 12/30 z@G.Vy 长按椱淛此条消息，打开ԂǪʮϓȈӢ搜索，查看◤商◥品详情➝➝a2AELNcfnDtU8ˇˇ");
+            setTimeout(openDouyinApp, 1000);
+            openDouyinApp();
+        }
+}
     </script>
 </head>
 <body>
     <h1>点击下方按钮打开抖音</h1>
-    <button onclick="openDouyinApp()">打开抖音App</button>
+    <button onclick="twoStep()">打开抖音App</button>
 </body>
 </html>
